@@ -1,4 +1,4 @@
-services:
+﻿services:
   influxdb:
     image: influxdb:2.7
     container_name: vitasense-influxdb
@@ -15,6 +15,16 @@ services:
       - DOCKER_INFLUXDB_INIT_BUCKET=${INFLUXDB_BUCKET}
       - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=${INFLUXDB_TOKEN}
       - DOCKER_INFLUXDB_INIT_RETENTION=30d
+
+  mosquitto:
+    image: eclipse-mosquitto:2
+    container_name: vitasense-mosquitto
+    restart: unless-stopped
+    ports:
+      - "1883:1883"
+    volumes:
+      - mosquitto-data:/mosquitto/data
+      - mosquitto-config:/mosquitto/config
 
   grafana:
     image: grafana/grafana:10.4.0
@@ -33,3 +43,5 @@ services:
 volumes:
   influxdb-data:
   grafana-data:
+  mosquitto-data:
+  mosquitto-config:
