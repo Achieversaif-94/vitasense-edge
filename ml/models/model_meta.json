@@ -1,0 +1,12 @@
+{
+  "features": [
+    "ecg",
+    "bpm",
+    "spo2",
+    "temp"
+  ],
+  "n_estimators": 100,
+  "contamination": 0.05,
+  "trained_on_rows": 3762,
+  "anomaly_rate_actual": 0.04917597022860181
+}
